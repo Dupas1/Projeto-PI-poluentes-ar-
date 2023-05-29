@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="CSS/style.css" />
+  <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@300&family=Source+Code+Pro:ital,wght@0,700;1,600&display=swap"
+    rel="stylesheet">
+  <script src="Js.js"></script>
+  <title>AIRcheckout</title>
+</head>
+
+<body>
+  <div id="page-container">
+    <header>
+      <div class="topo">
+        <img class="logo" src="https://cdn.discordapp.com/attachments/723406065756012616/1111386776037245069/assets.jpg"
+          alt="logo">
+        <h4>AIR CHECKOUT</h4>
+      </div>
+    </header>
+
+    <div id="content-wrap">
+      <main>
+        <div id="textoTabela">Tabela Classificação</div>
+
+        <div id="tabelaContainer">
+          <table border="1" id="tabelaElementos">
+            <thead>
+              <tr>
+                <th>ID</th>
+              </tr>
+              <tr>
+                <th>MP10</th>
+              </tr>
+              <tr>
+                <th>MP25</th>
+              </tr>
+              <tr>
+                <th>O3</th>
+              </tr>
+              <tr>
+                <th>CO</th>
+              </tr>
+              <tr>
+                <th>NO2</th>
+              </tr>
+              <tr>
+                <th>SO2</th>
+              </tr>
+
+
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="botaoContainer">
+          <button id="addBtn" onclick="addSample()">Adicionar</button>
+          <button id="delBtn" onclick="deleteSample()">Deletar</button>
+          <button id="altBtn" onclick="updateSample()">Alterar</button>
+        </div>
+
+        <div id="tabelaInsercaoContainer">
+          <table id="tabelaInsercao">
+            <tr>
+              <td>
+                <input type="text" id="IDInput" class="elemento" placeholder="ID">
+              </td>
+              <td>
+                <input type="text" id="MP10Input" class="elemento" placeholder="MP10">
+              </td>
+              <td>
+                <input type="text" id="MP25Input" class="elemento" placeholder="MP25">
+              </td>
+              <td>
+                <input type="text" id="O3Input" class="elemento" placeholder="O3">
+              </td>
+              <td>
+                <input type="text" id="COInput" class="elemento" placeholder="CO">
+              </td>
+              <td>
+                <input type="text" id="NO2Input" class="elemento" placeholder="NO2">
+              </td>
+              <td>
+                <input type="text" id="SO2Input" class="elemento" placeholder="SO2">
+              </td>
+            </tr>
+          </table>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+</body>
+
+<footer id="tabelabd"></footer>
+
+</html>
