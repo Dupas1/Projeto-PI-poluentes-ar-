@@ -24,6 +24,16 @@ try:
 except:
     print("Table already created\n")
 
+# altera dados
+    def alteradados(id, co, so2, no2, o3, mp25, mp10):
+        try:
+            comand = (
+                f'UPDATE amostras set co={co}, so2={so2}, no2={no2}, o3={o3}, mp25={mp25}, mp10={mp10} where id={id}')
+            cursor.execute(comand)
+            connection.commit()
+        except Exception as err:
+            print({err})
+
 # insere dados
     def inseredados(co, so2, no2, o3, mp25, mp10):
         query = (
@@ -37,28 +47,18 @@ except:
 # deleta dados
     def deletadados(id):
         try:
-            comando = (f'DELETE from amostras where ID={id}')
-            cursor.execute(comando)
+            comand = (f'DELETE from amostras where ID={id}')
+            cursor.execute(comand)
             connection.commit()
             return "Sucess"
-        except Exception as err:
-            print({err})
-
-# altera dados
-    def alteradados(id, co, so2, no2, o3, mp25, mp10):
-        try:
-            comando = (
-                f'UPDATE amostras set co={co}, so2={so2}, no2={no2}, o3={o3}, mp25={mp25}, mp10={mp10} where id={id}')
-            cursor.execute(comando)
-            connection.commit()
         except Exception as err:
             print({err})
 
 # Mostra os dados
     def printdados():
         amostrasBD = []
-        for row in cursor.execute('SELECT * from amostras order by id asc'):
-            amostrasBD.append(row)
+        for i in cursor.execute('SELECT * from amostras order by id asc'):
+            amostrasBD.append(i)
         return amostrasBD
 
 # media dos dados
