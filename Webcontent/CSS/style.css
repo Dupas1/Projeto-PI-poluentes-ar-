@@ -1,5 +1,6 @@
 body {
   background-color: #00615a;
+  font-family: 'Inter';
 }
 
 header {
@@ -28,7 +29,6 @@ header {
   flex-direction: row;
   align-items: center;
   font-size: 25px;
-
 }
 
 
@@ -44,7 +44,6 @@ header {
 
 #tabelaElementos {
   margin-top: 20px;
-  float: left;
 }
 
 #tabelaElementos th,
@@ -54,7 +53,6 @@ header {
 }
 
 #botaoContainer {
-  float: right; /* Flutuar à direita */
   text-align: right; /* Alinhamento à direita */
 }
 
@@ -64,14 +62,11 @@ header {
 }
 
 #tabelabd {
-  position: absolute;
   left: 50%;
-  transform: translateX(-50%);
   width: 500px;
   background-color: #02a89b;
   padding: 20px;
   text-align: center;
-  font-family: 'Inter';
   font-style: normal;
   font-weight: 800;
   font-size: 24px;

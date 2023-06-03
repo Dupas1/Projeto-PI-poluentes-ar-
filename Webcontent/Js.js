@@ -37,14 +37,16 @@ async function fetchData() {
 
 async function makeGetRequest() {
   // Função para fazer uma requisição GET à API
-  await fetch('http://127.0.0.1:5000/tabela')
+  await fetch('http://127.0.0.1:5000/classificacao')
     .then(response => response.json())
     .then(data => {
-      console.log(data["tabela"]); // Exibe a resposta da API no console
-      const media = data["tabela"];
-      const tabela = document.getElementById("tabelabd");
-      tabela.innerHTML = `${media[0]}--${media[1]}--${media[2]}--${media[3]}--${media[4]}--${media[5]}`;
-      // Insere os dados da API na tabela com id "tabelabd"
+      console.log(data["classificacao"]); // Exibe a resposta da API no console
+      console.log(data["mensagem"]); // Exibe a resposta da classificacao no console
+      document.getElementById('messagem-classification').innerHTML= data["mensagem"];
+      const media = data["classificacao"];
+      const classificacao = document.getElementById("classificacaobd");
+      classificacao.innerHTML = `${media[0]}--${media[1]}--${media[2]}--${media[3]}--${media[4]}--${media[5]}`;
+      // Insere os dados da API na tabela com id "classifcacobd"
     })
     .catch(error => {
       console.log('Ocorreu um erro:', error);

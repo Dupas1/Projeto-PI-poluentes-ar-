@@ -26,10 +26,11 @@ def Arqualiti(mp10, mp25, o3, co, no2, so2):
 
 
 # Rota para obter a tabela de classificação
-@app.route('/tabela', methods=['GET'])
+@app.route('/classificacao', methods=['GET'])
 def get_data():
     media = classificacao()
-    media = jsonify({"tabela": media})
+    res = Arqualiti(media[0], media[1], media[2], media[3], media[4], media[5])
+    media = jsonify({"classificacao": media, "mensagem": res})
     return media
 
 # Rota para obter a tabela de amostras
