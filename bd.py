@@ -24,7 +24,27 @@ try:
 except:
     print("Table already created\n")
 
+
+# Mostra os dados
+
+    def printdados():
+        amostrasBD = []
+        for i in cursor.execute('SELECT * from amostras order by id asc'):
+            amostrasBD.append(i)
+        return amostrasBD
+
+
+# media dos dados
+
+    def classificacao():
+        cursor.execute(
+            "select round(avg(MP10),2),round(avg(MP25),2),round(avg(O3),2),round(avg(CO),2),round(avg(NO2),2),round(avg(SO2),2) from AMOSTRAS")
+        media = cursor.fetchone()
+        return media
+
+
 # altera dados
+
     def alteradados(id, co, so2, no2, o3, mp25, mp10):
         try:
             comand = (
@@ -34,7 +54,9 @@ except:
         except Exception as err:
             print({err})
 
+
 # insere dados
+
     def inseredados(co, so2, no2, o3, mp25, mp10):
         query = (
             f"insert into amostras(co, so2, no2, o3, mp25, mp10) values ({co}, {so2}, {no2}, {o3}, {mp25},{ mp10})")
@@ -44,7 +66,9 @@ except:
         except Exception as err:
             print({err})
 
+
 # deleta dados
+
     def deletadados(id):
         try:
             comand = (f'DELETE from amostras where ID={id}')
@@ -53,17 +77,3 @@ except:
             return "Sucess"
         except Exception as err:
             print({err})
-
-# Mostra os dados
-    def printdados():
-        amostrasBD = []
-        for i in cursor.execute('SELECT * from amostras order by id asc'):
-            amostrasBD.append(i)
-        return amostrasBD
-
-# media dos dados
-    def classificacao():
-        cursor.execute(
-            "select round(avg(MP10),2),round(avg(MP25),2),round(avg(O3),2),round(avg(CO),2),round(avg(NO2),2),round(avg(SO2),2) from AMOSTRAS")
-        media = cursor.fetchone()
-        return media

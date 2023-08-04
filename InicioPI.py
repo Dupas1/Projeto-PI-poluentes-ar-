@@ -25,6 +25,14 @@ def Arqualiti(mp10, mp25, o3, co, no2, so2):
         return 'A qualidade do ar está boa.'
 
 
+# Rota para obter a tabela de amostras
+@app.route('/mostrar', methods=['GET'])
+def get_data_amostras():
+    amostras = printdados()
+    amostras = jsonify({"mostrar": amostras})
+    return amostras
+
+
 # Rota para obter a tabela de classificação
 @app.route('/classificacao', methods=['GET'])
 def get_data():
@@ -33,35 +41,8 @@ def get_data():
     media = jsonify({"classificacao": media, "mensagem": res})
     return media
 
-# Rota para obter a tabela de amostras
-
-
-@app.route('/mostrar', methods=['GET'])
-def get_data_amostras():
-    amostras = printdados()
-    amostras = jsonify({"mostrar": amostras})
-    return amostras
-
-# Rota para adicionar uma amostra
-
-
-@app.route('/amostras', methods=['POST'])
-def add_sample():
-    co = request.json['co']
-    so2 = request.json['so2']
-    no2 = request.json['no2']
-    o3 = request.json['o3']
-    mp25 = request.json['mp25']
-    mp10 = request.json['mp10']
-
-    inseredados(float(co), float(so2), float(no2),
-                float(o3), float(mp25), float(mp10))
-
-    return jsonify({"message": "Amostra adicionada com sucesso"})
 
 # Rota para atualizar uma amostra
-
-
 @app.route('/amostras/<id>', methods=['PUT'])
 def update_sample(id):
     co = request.json['co']
@@ -77,9 +58,23 @@ def update_sample(id):
     return jsonify({"message": "Amostra atualizada com sucesso"})
 
 
+# Rota para adicionar uma amostra
+@app.route('/amostras', methods=['POST'])
+def add_sample():
+    co = request.json['co']
+    so2 = request.json['so2']
+    no2 = request.json['no2']
+    o3 = request.json['o3']
+    mp25 = request.json['mp25']
+    mp10 = request.json['mp10']
+
+    inseredados(float(co), float(so2), float(no2),
+                float(o3), float(mp25), float(mp10))
+
+    return jsonify({"message": "Amostra adicionada com sucesso"})
+
+
 # Rota para excluir uma amostra
-
-
 @app.route('/amostras/<id>', methods=['DELETE'])
 def delete_sample(id):
     deletadados(id)

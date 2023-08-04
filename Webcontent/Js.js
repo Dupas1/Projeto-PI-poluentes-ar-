@@ -54,6 +54,42 @@ async function makeGetRequest() {
 }
 
 
+// Função para enviar uma requisição PUT para alterar uma amostra
+async function updateSample() {
+  const id = document.getElementById("IDInput").value;
+  const mp10 = document.getElementById("MP10Input").value;
+  const mp25 = document.getElementById("MP25Input").value;
+  const o3 = document.getElementById("O3Input").value;
+  const co = document.getElementById("COInput").value;
+  const no2 = document.getElementById("NO2Input").value;
+  const so2 = document.getElementById("SO2Input").value;
+
+  const data = {
+    mp10: mp10,
+    mp25: mp25,
+    o3: o3,
+    co: co,
+    no2: no2,
+    so2: so2
+  };
+
+  await fetch(`http://localhost:5000/amostras/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.message);
+    fetchData();
+  })
+  .catch(error => {
+    console.log('Ocorreu um erro:', error);
+  });
+}
+
 
 // Função para enviar uma requisição POST para adicionar uma amostra
 async function addSample() {
@@ -92,41 +128,6 @@ async function addSample() {
   });
 }
 
-// Função para enviar uma requisição PUT para alterar uma amostra
-async function updateSample() {
-  const id = document.getElementById("IDInput").value;
-  const mp10 = document.getElementById("MP10Input").value;
-  const mp25 = document.getElementById("MP25Input").value;
-  const o3 = document.getElementById("O3Input").value;
-  const co = document.getElementById("COInput").value;
-  const no2 = document.getElementById("NO2Input").value;
-  const so2 = document.getElementById("SO2Input").value;
-
-  const data = {
-    mp10: mp10,
-    mp25: mp25,
-    o3: o3,
-    co: co,
-    no2: no2,
-    so2: so2
-  };
-
-  await fetch(`http://localhost:5000/amostras/${id}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data.message);
-    fetchData();
-  })
-  .catch(error => {
-    console.log('Ocorreu um erro:', error);
-  });
-}
 
 // Função para enviar uma requisição DELETE para excluir uma amostra
 async function deleteSample() {
@@ -144,15 +145,6 @@ async function deleteSample() {
     console.log('Ocorreu um erro:', error);
   });
 }
-
-/*
-  window.addEventListener('DOMContentLoaded', (event) => {
-  // Adiciona event listeners aos botões
-  document.getElementById('altBtn').addEventListener('click', updateSample);
-  document.getElementById('delBtn').addEventListener('click', deleteSample);
-  document.getElementById('addBtn').addEventListener('click', addSample);
-});
-*/
 
 // Carrega os dados iniciais da tabela
 fetchData();
